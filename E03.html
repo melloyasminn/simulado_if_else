@@ -1,15 +1,39 @@
 <script>
     //PROBLEMA: Viajar para algum lugar
     //Peça para o usuário informar para qual estado deseja realizar a viagem. (Rio Grande do Sul-RS ou Minas Gerais-MG). Peça também para informar quantos dias ficará em viagem. O usuário também deverá informar "quantos dinheiros" (R$) possui para gastar na viagem.
-    
+
     //Considere que o custo diário de viagem para "RS" será de R$ 180,00 (180) e o custo diário de viagem para "MG" será de R$ 210,00 (210).
-    
+
     //Calcule se o usuário possui dinheiro suficiente para realizar a viagem para o destino que pretende. Se o usuário puder viajar, o programa apresentará a mensagem "Boa viagem" e quantos dias poderá ficar no destino, além de qual será o custo da viagem. Caso não possa viajar o programa apresentará a mensagem "Sem Férias" e também apresentará "quantos dinheiros" (R$) estão faltando para realizar a viagem.
 
     //ENTRADA
-
-
+    const viagem = prompt(`Para onde você vai viajar? Responda "MG" para Minas Gerais ou "RS" para Rio Grande do Sul`).trim().toUpperCase()
+    const dias = Number(prompt(`Quantos dias você ficará em viagem?`).trim())
+    const dinheiro = Number(prompt(`Quanto você vai levar de dinheiro?`.trim().replace(",", ".")))
+    const custors = Number((dias * 180).toFixed(2))
+    const customg = Number((dias * 210).toFixed(2))
+    let maisdias = 0 
+    let falta = 0
     //PROCESSAMENTO
+    if ((viagem == "RS") && (dinheiro >= custors)) {
+        maisdias = (dinheiro / 180)
+        alert(`Boa viagem! Você poderá ficar ${maisdias} dias na viagem, e o custo será de R$${custors}`)
+    }
+
+    else if ((viagem == "RS") && (dinheiro < custors)) {
+       falta = (custors - dinheiro).toFixed(2)
+        alert(`Sem férias, faltam R$${falta}`)
+    }
+
+    if (viagem == "MG" && dinheiro >= customg) {
+        maisdias = (dinheiro / 210)
+        alert(`Boa viagem! Você poderá ficar ${maisdias} dias na viagem, e o custo será de ${customg}`)
+    }
+
+    else if ((viagem == "MG") && (dinheiro < customg)) {
+       falta = (customg - dinheiro).toFixed(2)
+        alert(`Sem férias, faltam R$${falta}`)
+    }
 
 
     //SAÍDA

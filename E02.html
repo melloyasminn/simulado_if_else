@@ -9,11 +9,27 @@
     //Calcule o custo total dos alimentos e verifique se há dinheiro suficiente para realizar a compra, indicando se sobrará ou faltará dinheiro, e também apresentando qual foi a quantia que sobrou ou faltou para realizar a compra. Apresente também na tela o valor total da compra.
 
     //ENTRADA
-
-
+    const mamao = Number(prompt(`Qual o valor da unidade do mamão?`).replace (",", ".").trim())
+    const melancia = Number(prompt(`Qual o valo do quilo da melancia?`).replace (",", ".").trim())
+    const abacate = Number(prompt(`Qual o valor da unidade do abacate?`).replace (",", ".").trim())
+    const cebola = Number(prompt(`Qual o valo do quilo da cebola?`).replace (",", ".").trim())
+    const dinheiro = Number(prompt(`Quanto dinheiro você possui para realizar a compra?`).replace (",", ".").trim())
+    const alimentos = ((mamao * 5) + (melancia * 3) + (abacate * 4) + (cebola * 1.100)).toFixed(2)
+    let sobraoufalta = 0
     //PROCESSAMENTO
+    if (dinheiro > alimentos) {
+        sobraoufalta = (dinheiro - alimentos).toFixed(2)
+        alert(`Há dinheiro suficiente para realizar a compra, e sobra. O valor total da compra é de R$${alimentos}, e sobrará R$${sobraoufalta}`)
+    }
 
+    else if ( dinheiro < alimentos) {
+        sobraoufalta = (alimentos - dinheiro).toFixed(2)
+        alert(`Não há dinheiro suficiente para realizar a compra. O valor total da compra é de R$${alimentos}, e faltará R$${sobraoufalta}`)
+    }
 
+    else {
+        alert(`O valor da compra e o valor de dinheiro levado são iguais`)
+    }
     //SAÍDA
 
 </script>
